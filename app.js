@@ -18,7 +18,7 @@ app.set('view engine', 'ejs');
 // telling our app to use bodyparser
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
+// follow 1-6 to get an idea of general flow of code.
 // 1. HomePage tha gets loaded first
 app.get("/", function (req, res) {
 
