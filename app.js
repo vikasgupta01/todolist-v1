@@ -1,3 +1,5 @@
+// Section 22 : Lec 5 : Running code inside the EJS Template
+
 // Requiring the two packages that we just installed
 const express = require("express");
 const bodyParser = require("body-parser");
