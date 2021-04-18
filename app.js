@@ -6,10 +6,6 @@ const bodyParser = require("body-parser");
 // creating app const using express
 const app = express();
 
-// visit ejs general documentation {https://ejs.co/} & documentation on how to use it with express. {https://github.com/mde/ejs/wiki/Using-EJS-with-Express}
-// install ejs in project directory using command 'npm install ejs' in terminal
-// check for ejs dependency in package.json file.
-// create a 'views' folder in project where you'll keep all the views.
 // make sure to put this after declaring app. Otherwise you'll be using app before initializing it and will get error.
 app.set('view engine', 'ejs');
 
@@ -20,13 +16,6 @@ app.get("/", function (req, res) {
     var today = new Date();
     var currentDay = today.getDay();
     var day = "";
-
-    // if (currentDay === 6 || currentDay === 0) {
-    //     day = "Weekend";
-    // } else {
-    //     day = "Weekday";
-    // }
-
 
     switch (currentDay) {
         case 0:
@@ -56,10 +45,7 @@ app.get("/", function (req, res) {
             break;
     }
 
-
-    // we'll use res.render method in app.js instead of res.send or res.sendFile (see https://github.com/mde/ejs/wiki/Using-EJS-with-Express)
     res.render("list", { kindOfDay: day });
-    // kindOfDay variable is used for clarity on variable assignment. Usually, we'll use name 'day' for both.
 });
 
 
