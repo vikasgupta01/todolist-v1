@@ -1,3 +1,5 @@
+// Section 22 : Lec 3 : Templates? Why do we need Templates?
+
 // Requiring the two packages that we just installed
 const express = require("express");
 const bodyParser = require("body-parser");
