@@ -57,4 +57,4 @@ app.listen(3000, function () {
     // inside a loop (for ex : if-else, while, do-while etc) var has global scope and other two have local scope. (call it one of the JS pecularities)
     // And this is the reason we'll avoid using var in JS as much as we can. And there will be rare cases where we have to use them.
 
-    // see course material for more reading material on topics var, let and const
+    // see course material for more reading material on topics var, let and const. (https://www.appbrewery.co/p/web-development-course-resources/)
