@@ -1,5 +1,3 @@
-// 7/22-EJS : The concept of scope in the context of javascript
-
 const express = require("express");
 const bodyParser = require("body-parser");
 
@@ -47,14 +45,3 @@ app.post("/", function (req, res) {
 app.listen(3000, function () {
     console.log("Server started on port 3000");
 });
-
-
-// Lecture Specific comments : 
-
-    // We use three keywords to initiate variables in JS (1. Var, 2. let, 3. const)
-    // Inside a function - all three (var, let, const) have a LOCAL SCOPE.
-    // Outside a function - all three have GLOBAL SCOPE.
-    // inside a loop (for ex : if-else, while, do-while etc) var has global scope and other two have local scope. (call it one of the JS pecularities)
-    // And this is the reason we'll avoid using var in JS as much as we can. And there will be rare cases where we have to use them.
-
-    // see course material for more reading material on topics var, let and const
