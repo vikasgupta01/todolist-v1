@@ -6,33 +6,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Adding just this link won't work (you can see an error in developer tools saying it can't apply that css file),
+         this is happening because it's a server based website i.e. we're not running a static website anymore.
+         When we use express, it doesn't serve up all the files in our project, instead it only serves up main access 
+         point (app.js, which we define in package.json as parameter main), and it also serves up the views folder. But everything else it choses to ignore.  
+    -->
+
+    <!-- Since css file also needs to be served to our browser, and there might be some other files for ex some plain JS that we need to run on browser side.
+         To overcome this, developers normally create a folder named 'public', and inside this all css, images, browser side JS etc are kept. 
+         And we can tell express to serve up this public folder as a static resource. 
+    -->
 </head>
 
 <body>
 
     <!-- Scriptlet tag will be used here for control flow. It works on line by line basis. We'll have to add it on every line of code that isn't html.
-        Even if two lines consecutively have JS, we'll have to add it on both. {Read Tags section : https://ejs.co/} -->
-    <h1>
-        <%= kindOfDay %>
-    </h1>
+        Even if two lines consecutively have JS, we'll have to add it on both. {Read Tags section : https://ejs.co/} 
+    -->
 
-    <ul>
+    <div class="box" id="heading">
+        <h1>
+            <%= kindOfDay %>
+        </h1>
+    </div>
+
+    <div class="box">
+
         <!-- // 3. use a for loop to render additions individually by looping through entire array -->
         <!-- // snippets tag added in each line where we have JS code below -->
         <% for(let i=0; i<newListItems.length; i++) { %>
-            <li>
-                <%= newListItems[i] %>
-            </li>
+            <div class="item">
+                <input type="checkbox">
+                <p>
+                    <%= newListItems[i] %>
+                </p>
+            </div>
             <% } %>
 
-    </ul>
+                <form class="item" action="/" method="POST">
+                    <!-- 4. when the user adds a new item through the text input, it gets saved under the variable named 'newItem', 
+                            and we trigger a post request to the home route. Which will be caught by app.post method in app.js file. 
+                    -->
+                    <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+                    <button type="submit" name="button">+</button>
+                </form>
+    </div>
 
-    <form class="" action="/" method="POST">
-        <!-- 4. when the user adds a new item through the text input, it gets saved under the variable named 'newItem', 
-            and we trigger a post request to the home route. Which will be caught by app.post method in app.js file. -->
-        <input type="text" name="newItem">
-        <button type="submit" name="button">Add</button>
-    </form>
+
 
 </body>
 
