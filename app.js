@@ -9,7 +9,12 @@ let items = ["Buy Food", "Cook Food", "Eat Food", "Shit Food"];
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(express.static("public"));
+// Created new folder named public to keep CSS and browser side JS.
+// Since css file also needs to be served to our browser, and there might be some other files for ex. some plain JS that we need to run on browser side.
+// To overcome this, developers normally create a folder named 'public', and inside this all css, images, browser side JS etc are kept. 
+// And we can tell express to serve up this public folder as a static resource. 
 
 // follow 1-6 to understand general code flow and logic formation.
 // 1. HomePage tha gets loaded first
