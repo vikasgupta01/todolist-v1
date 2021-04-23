@@ -9,7 +9,9 @@ let items = ["Buy Food", "Cook Food", "Eat Food", "Shit Food"];
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(express.static("public"));
+// Created new folder named public to keep CSS and browser side JS. See comment on branch 8/22-EJS for details.
 
 // follow 1-6 to understand general code flow and logic formation.
 // 1. HomePage tha gets loaded first
