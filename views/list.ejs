@@ -1,24 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do List</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <!-- Adding just this link won't work. See comment on branch 8/22-EJS at this location to understand why we need to put styles.css under public folder. -->
-
-</head>
-
-<body>
-
-    <!-- Scriptlet tag will be used here for control flow. It works on line by line basis. We'll have to add it on every line of code that isn't html.
-        Even if two lines consecutively have JS, we'll have to add it on both. {Read Tags section : https://ejs.co/} -->
-
+<%- include("header") -%>
     <div class="box" id="heading">
         <h1>
-            <%= kindOfDay %>
+            <%= listTitle %>
         </h1>
     </div>
 
@@ -36,13 +19,13 @@
 
                 <form class="item" action="/" method="POST">
                     <!-- 4. when the user adds a new item through the text input, it gets saved under the variable named 'newItem', 
-                            and we trigger a post request to the home route. Which will be caught by app.post method in app.js file. 
-                    -->
+                            and we trigger a post request to the home route. Which will be caught by app.post method in app.js file.  -->
+
                     <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
-                    <button type="submit" name="button">+</button>
+                    <button type="submit" name="list" value=<%=listTitle%>>+</button>
+                    <!-- Submit button is same for both routes "/" & "/work". And it'll redirect to "/" route irrspective of where we click it from.
+                    But since we have put name and value fields, it'll get passed further. And depending on it's value, we can apply logic in "/" route of app.js. -->
                 </form>
     </div>
 
-</body>
-
-</html>
+    <%- include("footer") -%>

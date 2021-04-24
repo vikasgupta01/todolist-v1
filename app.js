@@ -5,6 +5,7 @@ const app = express();
 
 // need to define item here to increase it's scope and be able to use in app.get as well as in app.post
 let items = ["Buy Food", "Cook Food", "Eat Food", "Shit Food"];
+let workItems = [];
 
 app.set('view engine', 'ejs');
 
@@ -28,20 +29,39 @@ app.get("/", function (req, res) {
     let day = today.toLocaleDateString("en-US", options);
 
     //2. after passing through steps above, we render list.ejs passing in two variables (first contains date info, and second has items array) which get read there.
-    res.render("list", { kindOfDay: day, newListItems: items });
+    res.render("list", { listTitle: day, newListItems: items });
 });
+
 
 app.post("/", function (req, res) {
     // 5. when we're inside this block of code, we grab hold of value of newItem (entered through UI input), we save it to a variable 'item'
     let item = req.body.newItem;
 
-    // add that item to our array items
-    items.push(item);
-
-    // redirect to the home route. Taking us back to app.get method, with added element in items array.
-    res.redirect("/");
+    // add that item to our array items and redirect to required route.
+    if (req.body.list === "Work") {
+        workItems.push(item);
+        res.redirect("/work");
+    } else {
+        items.push(item);
+        res.redirect("/");
+    }
     // 6. now we're able to render list again, and pass over now updated array to the list.ejs
 });
+
+
+app.get("/work", function (req, res) {
+    res.render("list", { listTitle: "Work List", newListItems: workItems });
+})
+
+app.post("/work", function (req, res) {
+    let item = req.body.newItem;
+    workItems.push(item);
+    res.redirect("/work");
+})
+
+app.get("/about", function (req, res) {
+    res.render("about");
+})
 
 
 // listen on port 3000 and console log that our server has been started.
